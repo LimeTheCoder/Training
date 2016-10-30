@@ -58,7 +58,7 @@ public class Model {
         this(1, 100);
     }
 
-    /** Generates number, that user should guess from uniform distribution */
+    /** Generates number from uniform distribution, that user should guess */
     public void generateValue() {
         value = ThreadLocalRandom.current().nextInt(min, max + 1);
     }

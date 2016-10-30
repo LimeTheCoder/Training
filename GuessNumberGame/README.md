@@ -1,2 +1,2 @@
 # Task 1
-## Guess number, that program generate
+## Game where user should guess number, that program generate
