@@ -1,1 +1,2 @@
-# Quess random number task
+# Task 1
+## Guess number, that program generate
