@@ -6,24 +6,27 @@ import static org.junit.Assert.*;
 
 
 public class ModelTest {
-    private int max = 100;
-    private int min = 0;
     private Model model;
 
     @Before
     public void init() {
-        model = new Model(min, max);
+        model = new Model(Constants.DEFAULT_MIN_BOUNDARY,
+                Constants.DEFAULT_MAX_BOUNDARY);
     }
 
     @Test
     public void testCheckGuess() {
-        assertFalse(model.checkGuess(max + 1));
-        assertTrue(model.checkGuess(model.getValue()));
+        assertFalse(model.checkGuess(Constants.DEFAULT_MAX_BOUNDARY));
+        assertTrue(model.checkGuess(model.getSecretValue()));
     }
 
     @Test
     public void testRange() {
-        assertTrue(model.getValue() <= max && model.getValue() >= min);
+        for(int i = 0; i < 1000; i++) {
+            model.generateValue();
+            assertTrue(model.getMin() < model.getSecretValue());
+            assertTrue(model.getMax() > model.getSecretValue());
+        }
     }
 
     @Test
@@ -38,9 +41,16 @@ public class ModelTest {
 
     @Test
     public void testReverseRangeAssignment() {
-        Model m = new Model(max, min);
+        Model m = new Model(Constants.DEFAULT_MAX_BOUNDARY,
+                Constants.DEFAULT_MIN_BOUNDARY);
 
-        assertTrue(m.getMax() == max);
-        assertTrue(m.getMin() == min);
+        assertTrue(m.getMax() == Constants.DEFAULT_MAX_BOUNDARY);
+        assertTrue(m.getMin() == Constants.DEFAULT_MIN_BOUNDARY);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testInvalidRangeArguments() {
+        new Model(Constants.DEFAULT_MIN_BOUNDARY,
+                Constants.DEFAULT_MIN_BOUNDARY);
     }
 }

@@ -1,4 +1,5 @@
 package com.training.numguesser;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -17,13 +18,23 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class Model {
 
-    /** Store number, that user will try to guess */
-    private int value;
+    /**
+     * Store number, that user will try to guess.
+     * Secret value always in range
+     * between exclusive {@link #min} and {@link #max}.
+     */
+    private int secretValue;
 
-    /** Minimum of possible value */
+    /**
+     * Left boundary of secret game value.
+     * Game secret value always greater than that number.
+     */
     private int min;
 
-    /** Maximum of possible value */
+    /**
+     * Right boundary of secret game value.
+     * Game secret value always smaller than that number
+     */
     private int max;
 
     /** Stores history of user guessing */
@@ -32,35 +43,27 @@ public class Model {
     /**
      * Firstly check that params is correct and assing appropriate
      * values to {@code min} and {@code max} variables.
-     * After intialize list for {@code history} and generate
+     * After initialize list for {@code history} and generate
      * number, that user should guess by calling {@link #generateValue()}
      *
-     * @param min minimum possible value for generated number
-     * @param max maximum possible value for generated number
+     * @param min left boundary of secret game value
+     * @param max right boundary of secret game value
      */
     public Model(int min, int max) {
-
-        if(min <= max) {
-            this.min = min;
-            this.max = max;
-        } else {
-            this.min = max;
-            this.max = min;
-        }
-
+        setBoundaries(min, max);
         history = new ArrayList<>();
-
         generateValue();
     }
 
-    /** Call {@link #Model(int, int)} constructor with arguments (1, 100) */
+    /** Call {@link #Model(int, int)} constructor with default arguments */
     public Model() {
-        this(1, 100);
+        this(Constants.DEFAULT_MIN_BOUNDARY, Constants.DEFAULT_MAX_BOUNDARY);
     }
 
-    /** Generates number from uniform distribution, that user should guess */
+    /** Generates number from uniform distribution
+     * in range (min, max) exclusive, that user should guess */
     public void generateValue() {
-        value = ThreadLocalRandom.current().nextInt(min, max + 1);
+        secretValue = ThreadLocalRandom.current().nextInt(min + 1, max);
     }
 
     /**
@@ -73,45 +76,83 @@ public class Model {
      *         {@code false} if user prediction is not correct.
      */
     public boolean checkGuess(int num) {
-        history.add(num);
 
-        if(value == num) {
+        saveToHistory(num);
+
+        if(!checkRange(num)) {
+            return false;
+        }
+
+        if(secretValue == num) {
             return true;
         }
 
-        if(num > min && num < value) {
+        if(num < secretValue) {
             min = num;
-        }
-
-        if(num < max && num > value) {
+        } else {
             max = num;
         }
 
         return false;
     }
 
-    public int getMax() {
-        return max;
+    /**
+     * Check is argument in range between {@link #min} and {@link #max}
+     *
+     * @param num number for checking
+     * @return {@code true} if number in range between min and max exclusively
+     *         {@code false} if number is out of range (min, max)
+     */
+    public boolean checkRange(int num) {
+        return num > min && num < max;
     }
 
-    public void setMax(int max) {
-        this.max = max;
+    /**
+     * Set min and max boundaries for secret game value.
+     *
+     * @param min left boundary of secret game value
+     * @param max right boundary of secret game value
+     * @throws IllegalArgumentException In case, when arguments are invalid
+     */
+    public void setBoundaries(int min, int max) {
+        if(min < max) {
+            this.min = min;
+            this.max = max;
+        } else {
+            this.min = max;
+            this.max = min;
+        }
+
+        /* Cause secret value always lay between min and max exclusively,
+         * so equation min < secretValue < max must be correct,
+         * as a result (max - min) must be always greater or equal than 2
+         */
+        if(this.max - this.min < 2) {
+            throw new IllegalArgumentException("Invalid boundaries");
+        }
+    }
+
+    /**
+     * Add argument to history.
+     *
+     * @param num number, that should be stored to history
+     */
+    private void saveToHistory(int num) { history.add(num); }
+
+    public int getMax() {
+        return max;
     }
 
     public int getMin() {
         return min;
     }
 
-    public void setMin(int min) {
-        this.min = min;
+    public int getSecretValue() {
+        return secretValue;
     }
 
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
+    public void setSecretValue(int secretValue) {
+        this.secretValue = secretValue;
     }
 
     public List<Integer> getHistory() {

@@ -19,10 +19,13 @@ public class ViewTest {
 
     @Test
     public void testPrintRangeMessage() {
-        int min = 1;
-        int max = 23;
-        view.printRangeMessage(min, max);
-        assertEquals(out.toString(),
-                String.format(View.RANGE_HINT, min, max) + "\n");
+        view.printRangeMessage(Constants.DEFAULT_MIN_BOUNDARY,
+                Constants.DEFAULT_MAX_BOUNDARY);
+
+        assertEquals(
+                out.toString(),
+                String.format(View.RANGE_HINT, Constants.DEFAULT_MIN_BOUNDARY,
+                        Constants.DEFAULT_MAX_BOUNDARY) + "\n"
+        );
     }
 }

@@ -49,16 +49,28 @@ public class Controller {
      * @return integer number that user input
      */
     private int handleInput() {
-        view.printMessage(View.INPUT_NUMBER);
-        view.printRangeMessage(model.getMin(), model.getMax());
+        int res;
 
-        while(!scanner.hasNextInt()) {
-            view.printMessage(View.WRONG_INPUT);
-            view.printMessage(View.INPUT_NUMBER);
-            scanner.next();
+        while(true) {
+            view.printPromptForInput(model.getMin(), model.getMax());
+
+            while (!scanner.hasNextInt()) {
+                view.printMessage(View.WRONG_INPUT);
+                view.printMessage(View.NEW_LINE);
+                view.printPromptForInput(model.getMin(), model.getMax());
+
+                scanner.next();
+            }
+
+            res = scanner.nextInt();
+
+            if(model.checkRange(res)) { break; }
+
+            view.printMessage(View.NOT_IN_RANGE);
+            view.printMessage(View.NEW_LINE);
         }
 
-        return scanner.nextInt();
+        return res;
     }
 
     /**
@@ -68,13 +80,13 @@ public class Controller {
      * to {@link View} to print appropriate message.
      */
     public void run() {
-        int n = handleInput();
+        int n;
 
-        while(n != -1 && !model.checkGuess(n)) {
+        do {
             n = handleInput();
-        }
+        } while(n != -1 && !model.checkGuess(n));
 
         view.printMessage((n == -1) ? View.LOOSE_CASE : View.WIN_CASE);
-        view.printHistory(model.getHistory(), model.getValue());
+        view.printHistory(model.getHistory(), model.getSecretValue());
     }
 }
