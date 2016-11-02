@@ -54,15 +54,7 @@ public class Controller {
         while(true) {
             view.printPromptForInput(model.getMin(), model.getMax());
 
-            while (!scanner.hasNextInt()) {
-                view.printMessage(View.WRONG_INPUT);
-                view.printMessage(View.NEW_LINE);
-                view.printPromptForInput(model.getMin(), model.getMax());
-
-                scanner.next();
-            }
-
-            res = scanner.nextInt();
+            res = readInteger();
 
             if(model.checkRange(res)) { break; }
 
@@ -74,6 +66,58 @@ public class Controller {
     }
 
     /**
+     * Get integer value from user
+     *
+     * @return integer users input
+     */
+    private int readInteger() {
+        while (!scanner.hasNextInt()) {
+            view.printMessage(View.WRONG_INPUT);
+            view.printMessage(View.NEW_LINE);
+            view.printMessage(View.INPUT_INT);
+
+            scanner.next();
+        }
+
+        return scanner.nextInt();
+    }
+
+    /**
+     * Get from user left and right boundaries of secret value and
+     * perform validation of boundaries.
+     * In case of invalid boundaries use default values.
+     */
+    private void handleBoundaries() {
+        int left;
+        int right;
+
+        view.printMessage(View.WELCOME_MSG);
+
+        view.printMessage(View.INPUT_LEFT_BOUNDARY);
+        left = readInteger();
+
+        view.printMessage(View.INPUT_RIGHT_BOUNDARY);
+        right = readInteger();
+
+        /*
+         * Check is valid boundaries.
+         * In case of invalid boundaries use default values.
+         */
+
+        try {
+            model.setBoundaries(left, right);
+        }
+        catch (IllegalArgumentException e) {
+            view.printMessage(View.INVALID_RANGE);
+            model.setBoundaries(Constants.DEFAULT_MIN_BOUNDARY,
+                    Constants.DEFAULT_MAX_BOUNDARY);
+        }
+        finally {
+            model.generateValue();
+        }
+    }
+
+    /**
      * Get user input from {@link #handleInput()} method and
      * interact with {@link Model} to check is user guess is correct.
      * If user guessed number or decided to leave game, method delegate
@@ -82,6 +126,9 @@ public class Controller {
     public void run() {
         int n;
 
+        handleBoundaries();
+
+        /* Handle user prediction and check is secret number is guessed */
         do {
             n = handleInput();
         } while(n != -1 && !model.checkGuess(n));

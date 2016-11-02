@@ -43,6 +43,18 @@ public class View {
 
     public final static String LOOSE_CASE = "Try next time";
 
+    public final static String INPUT_INT = "Input integer:";
+
+    public final static String INPUT_LEFT_BOUNDARY =
+            "Input left boundary of secret value range:";
+
+    public final static String INPUT_RIGHT_BOUNDARY =
+            "Input right boundary of secret value range:";
+
+    public final static String WELCOME_MSG = "Welcome to the game!";
+
+    public final static String INVALID_RANGE =
+            "Invalid range. Use default values instead.";
 
     /** Stream to output information for user */
     private PrintStream stream;
