@@ -12,10 +12,11 @@ public interface RegexConstants {
     String POSTAL_CODE = "^[0-9]{5}$";
     String GROUP = "^([Ff]amily|[Ff]riends|[Ww]ork)$";
     String SKYPE = "^[a-zA-Z][a-zA-Z0-9\\.,\\-_]{5,31}$";
-    String USERNAME = "^[a-zA-Z0-9-_]{3,15}$";
+    String USERNAME = "^[a-zA-Z0-9-_]{3,14}$";
     String BUILDING = "^\\d{1,4}[A-Za-z]?$";
     String APARTMENT = "^\\d{1,5}$";
-    String COMMENT = "^.{0,100}$";
+    String COMMENT = "^.{0,99}$";
     String DATE = "^\\d{2}-\\d{2}-\\d{2}$";
     String STRING = "[a-zA-Z]+{2, 29}";
+    String OPTIONAL = "^(y|n)$";
 }

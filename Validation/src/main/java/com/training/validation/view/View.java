@@ -24,7 +24,7 @@ public class View {
             "Enter comment(100 chars):";
 
     public static final String PROMT_GROUP =
-            "Enter group (Family - 0, Work - 1, Friends - 2):";
+            "Enter group (Family, Work, Friends):";
 
     public static final String PROMT_HOME_PHONE =
             "Enter home phone number(+** (***) ***-****):";
@@ -32,9 +32,12 @@ public class View {
     public static final String PROMT_CELL_PHONE =
             "Enter cell phone number(+** (***) ***-****):";
 
+    public static final String OPTIONAL_CHOOSE =
+            "Enter additional cell phone number?(y/n)";
+
     public static final String PROMT_OPTIONAL_PHONE =
-            "Enter additional cell phone number(+** (***) ***-****)\n " +
-                    "Or skip question if you don't want.";
+            "Enter additional cell phone number(+** (***) ***-****)";
+
     public static final String PROMT_EMAIL =
             "Enter email(mail@domain):";
 
@@ -54,7 +57,44 @@ public class View {
     public static final String PROMT_CREATION_DATE =
             "Enter creation date(yy/mm/dd):";
 
-    public static final String ERROR_MSG = "Incorrect input. Try again.";
+    public static final String TRY_AGAIN = "Please try again.";
+
+    public static final String ERROR_TAG = "[Error]";
+
+    /* Validation errors */
+
+    public static final String STRING_ERROR =
+            "String must be in range (3-30) chars";
+
+    public static final String USERNAME_ERROR =
+            "Username must be in range (4-15) chars";
+
+    public static final String GROUP_ERROR =
+            "No such group. Choose from the list!";
+
+    public static final String COMMENT_ERROR =
+            "Comment must have no more 100 chars";
+
+    public static final String DATE_ERROR =
+            "Date must be in following format(yy/mm/dd)";
+
+    public static final String PHONE_ERROR =
+            "Phone number must be following format (+** (***) ***-****)";
+
+    public static final String EMAIL_ERROR =
+            "Email must be following format (mail@domain)";
+
+    public static final String SKYPE_ERROR =
+            "Skype username must be between (5-32 chars)";
+
+    public static final String BUILDING_ERROR =
+            "Incorrect building format";
+
+    public static final String APARTMENT_ERROR =
+            "Apartment number can store only 1-4 digits";
+
+    public static final String POSTAL_ERROR =
+            "Postal code must store 5 digits";
 
     /** Stream to output information for user */
     private PrintStream stream;
@@ -72,4 +112,8 @@ public class View {
         stream.println(message);
     }
 
+    public void printError(String error) {
+        stream.println(ERROR_TAG + error);
+        stream.println(TRY_AGAIN);
+    }
 }
