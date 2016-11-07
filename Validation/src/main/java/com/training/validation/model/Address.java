@@ -1,5 +1,7 @@
 package com.training.validation.model;
 
+import com.training.validation.view.View;
+
 /**
  * Part of the model that describes address entity
  *
@@ -12,6 +14,7 @@ public class Address {
     private String street;
     private String building;
     private int apartment;
+
 
     public String getPostalCode() {
         return postalCode;
@@ -53,4 +56,18 @@ public class Address {
         this.apartment = apartment;
     }
 
+    /**
+     * Combine fields of object to produce full information about it.
+     *
+     * @return full address
+     */
+    public String getFullAddress(){
+        return new StringBuilder().append(postalCode)
+                .append(View.SPACE_DELIMITER)
+                .append(city).append(View.SPACE_DELIMITER)
+                .append(street).append(View.SPACE_DELIMITER)
+                .append(building).append(View.SPACE_DELIMITER)
+                .append(apartment)
+                .toString();
+    }
 }

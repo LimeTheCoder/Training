@@ -32,11 +32,8 @@ public class View {
     public static final String PROMT_CELL_PHONE =
             "Enter cell phone number(+** (***) ***-****):";
 
-    public static final String OPTIONAL_CHOOSE =
+    public static final String PROMT_OPTIONAL =
             "Enter additional cell phone number?(y/n)";
-
-    public static final String PROMT_OPTIONAL_PHONE =
-            "Enter additional cell phone number(+** (***) ***-****)";
 
     public static final String PROMT_EMAIL =
             "Enter email(mail@domain):";
@@ -55,13 +52,19 @@ public class View {
     public static final String PROMT_APARTMENT = "Apartment number:";
 
     public static final String PROMT_CREATION_DATE =
-            "Enter creation date(yy/mm/dd):";
+            "Enter creation date(yy-mm-dd):";
 
-    public static final String TRY_AGAIN = "Please try again.";
+    public static final String PROMT_EDIT_DATE =
+            "Enter edit date(yy-mm-dd):";
+
+    public static final String ADD_ANOTHER_OPTION =
+            "Do you want to add another record? (y/n)";
+
+    /* Validation errors */
 
     public static final String ERROR_TAG = "[Error]";
 
-    /* Validation errors */
+    public static final String TRY_AGAIN = "Please try again.";
 
     public static final String STRING_ERROR =
             "String must be in range (3-30) chars";
@@ -76,7 +79,7 @@ public class View {
             "Comment must have no more 100 chars";
 
     public static final String DATE_ERROR =
-            "Date must be in following format(yy/mm/dd)";
+            "Date must be in following format(yy-mm-dd)";
 
     public static final String PHONE_ERROR =
             "Phone number must be following format (+** (***) ***-****)";
@@ -95,6 +98,13 @@ public class View {
 
     public static final String POSTAL_ERROR =
             "Postal code must store 5 digits";
+
+    public static final String OPTIONAL_ERROR =
+            "Answer must be (y/n)";
+
+    /* Delimiters */
+    public static final String SPACE_DELIMITER = " ";
+    public static final String POINT_DELIMITER = ".";
 
     /** Stream to output information for user */
     private PrintStream stream;

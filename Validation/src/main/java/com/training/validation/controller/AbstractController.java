@@ -2,7 +2,6 @@ package com.training.validation.controller;
 
 import com.training.validation.controller.validator.Validator;
 import com.training.validation.controller.validator.ValidatorFactory;
-import com.training.validation.model.Record;
 import com.training.validation.view.View;
 
 import java.io.InputStream;
@@ -12,26 +11,32 @@ import java.util.Scanner;
  * Part of MVC pattern that accepts input and converts it
  * to commands for the Model or View.
  *
- * @version 1.0 06 Nov 2016
+ * @version 1.0 07 Nov 2016
  * @author Taras Sakharchuk
  */
-public class Controller {
-    /* Controller knows about model and view */
-    private Record record;
-    private View view;
-    ValidatorFactory factory;
+public abstract class AbstractController <T> {
+
+    /** Object, that will be managed by controller */
+    protected T entity;
+
+    /** Provides ability to display information for user */
+    protected View view;
+
+    /** Provides different kind of validators */
+    protected ValidatorFactory factory;
 
     /** By mean of scanner controller will get input information from user */
-    private Scanner scanner;
+    protected Scanner scanner;
 
     /**
-     * Controller that initialize {@link #view}.
-     * Call {@link #setScanner(InputStream)} method
+     * Constructor that initialize {@link #view}, {@link #factory}.
+     * Also constructor calls {@link #setScanner(InputStream)} method
      * with {@code System.in} argument to intialize the scanner.
      *
-     * @param view
+     * @param view view, that provides ability to display information for user
+     * @param factory factory, that provides different kind of validators
      */
-    public Controller(View view, ValidatorFactory factory) {
+    public AbstractController(View view, ValidatorFactory factory) {
         this.view = view;
         this.factory = factory;
 
@@ -49,19 +54,26 @@ public class Controller {
      * @param validator object, that will check is input is valid
      * @return user's input
      */
-    public String getInput(String msg, Validator validator) {
+    protected String getInput(String msg, Validator validator) {
         view.printMessage(msg);
         String input = scanner.nextLine();
         while(!validator.isValid(input)) {
-            view.printMessage(validator.getError());
+            view.printError(validator.getError());
             view.printMessage(msg);
             input = scanner.nextLine();
         }
         return input;
     }
 
-    public void run() {
-        view.printMessage(getInput(View.PROMT_EMAIL,
-                factory.getValidator(ValidatorFactory.EMAIL_VALIDATOR)));
+    public T getEntity() {
+        return entity;
     }
+
+    /**
+     * Fill up all fields of entity with valid information
+     * provided by user.
+     *
+     * @return filled entity
+     */
+    public abstract T processEntity();
 }

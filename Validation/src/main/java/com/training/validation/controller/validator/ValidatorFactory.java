@@ -69,7 +69,7 @@ public class ValidatorFactory {
                         View.DATE_ERROR);
             case OPTIONAL_VALIDATOR:
                 return new InputValidator(RegexConstants.OPTIONAL,
-                        View.OPTIONAL_CHOOSE);
+                        View.OPTIONAL_ERROR);
             case STRING_VALIDATOR:
             default:
                 return new InputValidator(RegexConstants.STRING,

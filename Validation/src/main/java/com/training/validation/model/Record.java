@@ -1,6 +1,6 @@
 package com.training.validation.model;
 
-import java.util.Date;
+import com.training.validation.view.View;
 
 /**
  * Part of the model that describes record entity.
@@ -21,9 +21,10 @@ public class Record {
     private String email;
     private String skype;
     private Address address;
-    private Date createDate;
-    private Date editDate;
+    private String createDate;
+    private String editDate;
     private Group group;
+
 
     public String getSurname() {
         return surname;
@@ -113,19 +114,19 @@ public class Record {
         this.address = address;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 
-    public Date getEditDate() {
+    public String getEditDate() {
         return editDate;
     }
 
-    public void setEditDate(Date editDate) {
+    public void setEditDate(String editDate) {
         this.editDate = editDate;
     }
 
@@ -135,5 +136,17 @@ public class Record {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    /**
+     * Combine surname with first chars in name and patronymic
+     * to create initials of person in record.
+     *
+     * @return initials of person in record
+     */
+    public String getInitials(){
+        return surname + View.SPACE_DELIMITER + name.charAt(0) +
+                View.POINT_DELIMITER + patronymic.charAt(0) +
+                View.POINT_DELIMITER;
     }
 }
