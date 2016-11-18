@@ -157,6 +157,7 @@ public abstract class Vegetable {
                 ", fats per 100 grammes =" + fats +
                 ", calories per 100 grammes =" + calories +
                 ", weight=" + weight +
+                ", total_cal=" + getTotalCalories() +
                 '}';
     }
 }

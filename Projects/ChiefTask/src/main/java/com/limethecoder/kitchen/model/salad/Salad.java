@@ -22,7 +22,8 @@ public class Salad implements VegetarianDish {
 
     /** Default comparator for sorting in ascending order */
     private final static Comparator<Vegetable> DEFAULT_COMPARATOR =
-            (o1, o2) -> Double.compare(o1.getCalories(), o2.getCalories());
+            (o1, o2) -> Double.compare(o1.getTotalCalories(),
+                    o2.getTotalCalories());
 
     /** Ingredients of salad */
     private List<Vegetable> ingredients;
