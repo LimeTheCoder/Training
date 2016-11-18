@@ -1,6 +1,6 @@
-package com.limethecoder.kitchen.model.entities;
+package com.limethecoder.kitchen.model.vegetable.entities;
 
-import com.limethecoder.kitchen.model.Vegetable;
+import com.limethecoder.kitchen.model.vegetable.Vegetable;
 
 /**
  * Class describes common features of broccoli

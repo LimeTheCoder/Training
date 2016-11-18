@@ -1,4 +1,6 @@
-package com.limethecoder.kitchen.model;
+package com.limethecoder.kitchen.model.vegetable;
+
+import com.limethecoder.kitchen.model.salad.Salad;
 
 /**
  * Class describes common functionality for vegetable entities.
@@ -6,6 +8,7 @@ package com.limethecoder.kitchen.model;
  * @version 1.0 18 Oct 2016
  * @author Taras Sakharchuk
  *
+ * @see Salad
  */
 public abstract class Vegetable {
 
