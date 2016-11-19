@@ -64,4 +64,9 @@ public interface VegetarianDish {
      * @return list with ingredients, that matches given predicate
      */
     List<Vegetable> findByPredicate(Predicate<Vegetable> predicate);
+
+    /**
+     * Prepare all ingredients for being ready to consuming.
+     */
+    void prepareIngredients();
 }

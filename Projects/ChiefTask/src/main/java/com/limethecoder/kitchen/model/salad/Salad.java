@@ -41,6 +41,8 @@ public class Salad implements VegetarianDish {
     public Salad(String name, List<Vegetable> ingredients) {
         this.ingredients = ingredients;
         this.name = name;
+
+        prepareIngredients();
     }
 
     /**
@@ -52,9 +54,15 @@ public class Salad implements VegetarianDish {
      */
     @Override
     public void addIngredient(Vegetable ingredient) {
+        if (ingredient == null) {
+            return;
+        }
+
         if (ingredients == null) {
             ingredients = new ArrayList<>();
         }
+
+        ingredient.prepareVegetable();
         ingredients.add(ingredient);
     }
 
@@ -85,6 +93,15 @@ public class Salad implements VegetarianDish {
     }
 
     @Override
+    public void prepareIngredients() {
+        if(ingredients == null || ingredients.isEmpty()) {
+            return;
+        }
+
+        ingredients.forEach(Vegetable::prepareVegetable);
+    }
+
+    @Override
     public List<Vegetable> findByCalories(double minCalories, double maxCalories) {
         return findByPredicate((x) -> x.getTotalCalories() >= minCalories
                 && x.getTotalCalories() <= maxCalories);
@@ -107,6 +124,7 @@ public class Salad implements VegetarianDish {
 
     public void setIngredients(List<Vegetable> ingredients) {
         this.ingredients = ingredients;
+        prepareIngredients();
     }
 
     public String getName() {
