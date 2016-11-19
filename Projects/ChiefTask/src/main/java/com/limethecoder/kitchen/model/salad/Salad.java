@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -73,15 +74,20 @@ public class Salad implements VegetarianDish {
     }
 
     @Override
-    public List<Vegetable> findByCalories(double minCalories, double maxCalories) {
+    public List<Vegetable> findByPredicate(Predicate<Vegetable> predicate) {
         if (ingredients == null || ingredients.isEmpty()) {
             return null;
         }
 
-        return ingredients.stream().
-                filter((x) -> x.getTotalCalories() >= minCalories
-                        && x.getTotalCalories() <= maxCalories)
+        return ingredients.stream()
+                .filter(predicate)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Vegetable> findByCalories(double minCalories, double maxCalories) {
+        return findByPredicate((x) -> x.getTotalCalories() >= minCalories
+                && x.getTotalCalories() <= maxCalories);
     }
 
     @Override

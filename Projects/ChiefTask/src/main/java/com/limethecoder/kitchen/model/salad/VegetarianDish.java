@@ -5,6 +5,7 @@ import com.limethecoder.kitchen.model.vegetable.SortOrder;
 import com.limethecoder.kitchen.model.vegetable.Vegetable;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * Class describes common features of vegetarian dish.
@@ -54,4 +55,13 @@ public interface VegetarianDish {
      */
     List<Vegetable> findByCalories(double minCalories,
                                           double maxCalories);
+
+    /**
+     * Filtered all ingredients based on given predicate
+     *
+     * @param predicate predicate to perform filtering
+     *
+     * @return list with ingredients, that matches given predicate
+     */
+    List<Vegetable> findByPredicate(Predicate<Vegetable> predicate);
 }
