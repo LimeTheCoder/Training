@@ -37,21 +37,19 @@ public class ArraysUtil {
         int j = 0;
 
         while(i < first.length && j < second.length) {
-            if(first[i] < second[j]) {
-                while (i < first.length && first[i] < second[j]) {
-                    result.add(first[i]);
-                    i++;
-                }
-            } else if(second[j] < first[i]) {
-                while (j < second.length && second[j] < first[i]) {
-                    result.add(second[j]);
-                    j++;
-                }
-            } else {
-                while(i < first.length && j < second.length && first[i] == second[j]) {
-                    i++;
-                    j++;
-                }
+            while (i < first.length && first[i] < second[j]) {
+                result.add(first[i]);
+                i++;
+            }
+
+            while (j < second.length && second[j] < first[i]) {
+                result.add(second[j]);
+                j++;
+            }
+
+            while(i < first.length && j < second.length && first[i] == second[j]) {
+                i++;
+                j++;
             }
         }
 
