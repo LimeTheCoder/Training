@@ -3,3 +3,8 @@
 ### [Task 1.1. Game with custom boundaries, input by user.](../master/GuessNumberGame)
 ### [Task 2. Validator.](../master/Validation)
 ### [Task 3. Reflection.](../master/ReflectionTask)
+
+# Capstone Projects
+
+### [Main repository](../master/Projects)
+### [Project 1. Chief-cooker](../master/Projects/ChiefTask)
