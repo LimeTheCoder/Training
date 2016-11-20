@@ -3,8 +3,10 @@
 ### [Task 1.1. Game with custom boundaries, input by user.](../master/GuessNumberGame)
 ### [Task 2. Validator.](../master/Validation)
 ### [Task 3. Reflection.](../master/ReflectionTask)
+### [Task 4. Find distinct elements in array](../master/Algorithms)
+### [Task 5. Sort array by frequency of its elements](../master/Algorithms)
 
 # Capstone Projects
 
-### [Main repository](../master/Projects)
+### [Main repository for projects](../master/Projects)
 ### [Project 1. Chief-cooker](../master/Projects/ChiefTask)
