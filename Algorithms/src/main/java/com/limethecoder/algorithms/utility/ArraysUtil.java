@@ -2,6 +2,7 @@ package com.limethecoder.algorithms.utility;
 
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Utility class that stores implementation of algorithms for arrays
@@ -108,6 +109,53 @@ public class ArraysUtil {
             int k = Math.abs(map.get(key));
             for(int j = k; j > 0; j--) {
                 result.add(key);
+            }
+        }
+
+        return result;
+    }
+
+
+
+    /**
+     * Sort array based on element frequency.
+     *
+     * <p>Examples</p>
+     * Input: arr[] = {2, 5, 2, 8, 5, 6, 8, 8}
+     * Output: result[] = {8, 8, 8, 2, 2, 5, 5, 6}
+     *
+     * Algorithm complexity: O(n log(n)), because we need to sort map entries
+     * in line 146, and in worst case each entry will store
+     * exactly one element of original array
+     *
+     * Space complexity : O(n), use additional map and list structures
+     *
+     * @param arr array for sorting
+     * @return array sorted based on element frequency
+     * @throws NullPointerException if passed as argument array is null
+     */
+    public static int[] sortByFrequency(int[] arr) {
+        Objects.requireNonNull(arr, "Array must not be null");
+
+        Map<Integer, Integer> map = new HashMap<>();
+        List<Map.Entry<Integer, Integer>> sortedEntries;
+
+        int[] result = new int[arr.length];
+
+        for(int element : arr) {
+            map.put(element, map.getOrDefault(element, 0) + 1);
+        }
+
+        sortedEntries = map.entrySet().stream().
+                sorted(Map.Entry.comparingByValue((a, b) -> b - a))
+                .collect(Collectors.toList());
+
+        int arrIdx = 0;
+
+        for(Map.Entry<Integer, Integer> entry : sortedEntries) {
+            for(int i = 0; i < entry.getValue(); i++) {
+                result[arrIdx] = entry.getKey();
+                arrIdx++;
             }
         }
 
