@@ -125,7 +125,7 @@ public class ArraysUtil {
      * Output: result[] = {8, 8, 8, 2, 2, 5, 5, 6}
      *
      * Algorithm complexity: O(n log(n)), because we need to sort map entries
-     * in line 146, and in worst case each entry will store
+     * and in worst case each entry will store
      * exactly one element of original array
      *
      * Space complexity : O(n), use additional map and list structures
