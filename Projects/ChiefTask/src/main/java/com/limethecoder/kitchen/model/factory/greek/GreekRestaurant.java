@@ -16,22 +16,30 @@ import java.util.Arrays;
 public class GreekRestaurant implements VegetarianRestaurant {
     @Override
     public VegetarianDish orderDish(String name) {
-        switch (name) {
-            case GreekMenu.SUNNY:
-                return new Salad(GreekMenu.SUNNY,
+        GreekMenu choice = GreekMenu.valueOf(name);
+        switch (choice) {
+            case SUNNY:
+                return new Salad(GreekMenu.SUNNY.name(),
                         Arrays.asList(new Potato(15),
                                 new Onion(75),
                                 new Carrot(35),
                                 new Tomato(27),
                                 new Onion(25),
                                 new Carrot(13)));
-            case GreekMenu.GREEK:
+            case GREEK:
             default:
-                return new Salad(GreekMenu.GREEK,
+                return new Salad(GreekMenu.GREEK.name(),
                         Arrays.asList(new Tomato(37),
                                 new Broccoli(115),
                                 new Carrot(48),
                                 new Potato(29)));
         }
+    }
+
+    @Override
+    public String[] getMenu() {
+        return Arrays.stream(GreekMenu.values())
+                .map(GreekMenu::name)
+                .toArray(String[]::new);
     }
 }

@@ -1,7 +1,6 @@
 package com.limethecoder.kitchen.controller;
 
 import com.limethecoder.kitchen.model.factory.VegetarianRestaurant;
-import com.limethecoder.kitchen.model.factory.russian.RussianMenu;
 import com.limethecoder.kitchen.model.salad.VegetarianDish;
 import com.limethecoder.kitchen.model.vegetable.SortOrder;
 import com.limethecoder.kitchen.model.vegetable.Vegetable;
@@ -37,7 +36,7 @@ public class Controller {
      * Demonstrate work with {@link #restaurant}
      */
     public void process() {
-        VegetarianDish dish = restaurant.orderDish(RussianMenu.ORIGINAL);
+        VegetarianDish dish = restaurant.orderDish(restaurant.getMenu()[2]);
 
         view.printMessage(View.INGREDIENTS);
         view.printList(dish.getIngredients());

@@ -6,7 +6,6 @@ package com.limethecoder.kitchen.model.factory.greek;
  * @version 1.0 18 Oct 2016
  * @author Taras Sakharchuk
  */
-public interface GreekMenu {
-    String GREEK = "Greek";
-    String SUNNY = "Sunny";
+public enum GreekMenu {
+    GREEK, SUNNY
 }

@@ -5,7 +5,6 @@ import com.limethecoder.kitchen.model.salad.Salad;
 import com.limethecoder.kitchen.model.salad.VegetarianDish;
 import com.limethecoder.kitchen.model.vegetable.entities.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 
@@ -18,25 +17,34 @@ import java.util.Arrays;
 public class RussianRestaurant implements VegetarianRestaurant {
     @Override
     public VegetarianDish orderDish(String name) {
-        switch (name) {
-            case RussianMenu.VINAIGRETTE:
-                return new Salad(RussianMenu.VINAIGRETTE,
+        RussianMenu choice = RussianMenu.valueOf(name);
+
+        switch (choice) {
+            case VINAIGRETTE:
+                return new Salad(RussianMenu.VINAIGRETTE.name(),
                         Arrays.asList(new Potato(140),
                                 new Cucumber(75),
                                 new Carrot(15)));
-            case RussianMenu.SUMMER:
-                return new Salad(RussianMenu.SUMMER,
+            case SUMMER:
+                return new Salad(RussianMenu.SUMMER.name(),
                         Arrays.asList(new Broccoli(30),
                                 new Onion(62),
                                 new Carrot(45)));
-            case RussianMenu.ORIGINAL:
+            case ORIGINAL:
             default:
-                return new Salad(RussianMenu.ORIGINAL,
+                return new Salad(RussianMenu.ORIGINAL.name(),
                         Arrays.asList(new Tomato(213),
                                 new Potato(123),
                                 new Carrot(15),
                                 new Onion(48),
                                 new Carrot(25)));
         }
+    }
+
+    @Override
+    public String[] getMenu() {
+        return Arrays.stream(RussianMenu.values())
+                .map(RussianMenu::name)
+                .toArray(String[]::new);
     }
 }

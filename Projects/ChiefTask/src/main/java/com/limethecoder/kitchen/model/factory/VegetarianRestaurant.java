@@ -17,4 +17,11 @@ public interface VegetarianRestaurant {
      * @return ordered dish
      */
     VegetarianDish orderDish(String name);
+
+    /**
+     * Return menu of that restaurant.
+     *
+     * @return list of dishes in that restaurant
+     */
+    String[] getMenu();
 }

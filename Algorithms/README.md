@@ -1,4 +1,4 @@
-# Repository that stores algorithm implementation
+# Repository that stores algorithms implementation
 
 ## Implemented algorithms:
 * Find distinct elements in array with sorting

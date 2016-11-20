@@ -22,16 +22,17 @@ public class VegetarianDishTest {
 
     @Before
     public void init() {
-        vegetarianDish = new Salad(RussianMenu.ORIGINAL,
+        vegetarianDish = new Salad(RussianMenu.ORIGINAL.name(),
                 Arrays.asList(
-                        new Carrot(100), // 41
-                        new Onion(50), // 20
-                        new Tomato(25))); // 4
+                        new Carrot(100), // Total calories = 41
+                        new Onion(50), // Total calories = 20
+                        new Tomato(25))); // Total calories = 4
     }
 
     @Test
     public void testTotalCalories() {
-        assertEquals(vegetarianDish.getTotalCalories(), 65.0, 0.01);
+        double totalCalories = 41.0 + 20.0 + 4.0;
+        assertEquals(vegetarianDish.getTotalCalories(), totalCalories, 0.01);
     }
 
     @Test
