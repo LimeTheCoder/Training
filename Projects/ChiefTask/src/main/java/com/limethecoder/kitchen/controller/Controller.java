@@ -1,9 +1,9 @@
 package com.limethecoder.kitchen.controller;
 
 import com.limethecoder.kitchen.model.factory.VegetarianRestaurant;
-import com.limethecoder.kitchen.model.salad.Ingredient;
-import com.limethecoder.kitchen.model.salad.VegetarianDish;
-import com.limethecoder.kitchen.model.salad.SortOrder;
+import com.limethecoder.kitchen.model.entity.Ingredient;
+import com.limethecoder.kitchen.model.entity.VegetarianDish;
+import com.limethecoder.kitchen.model.entity.SortOrder;
 import com.limethecoder.kitchen.view.View;
 
 import java.util.List;

@@ -1,10 +1,10 @@
 package com.limethecoder.kitchen.model.factory.russian;
 
 import com.limethecoder.kitchen.model.factory.VegetarianRestaurant;
-import com.limethecoder.kitchen.model.salad.Ingredient;
-import com.limethecoder.kitchen.model.salad.Salad;
-import com.limethecoder.kitchen.model.salad.VegetarianDish;
-import com.limethecoder.kitchen.model.vegetable.Vegetable;
+import com.limethecoder.kitchen.model.entity.Ingredient;
+import com.limethecoder.kitchen.model.entity.Salad;
+import com.limethecoder.kitchen.model.entity.VegetarianDish;
+import com.limethecoder.kitchen.model.entity.Vegetable;
 
 import java.util.Arrays;
 

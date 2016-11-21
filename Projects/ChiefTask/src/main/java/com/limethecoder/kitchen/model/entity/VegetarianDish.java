@@ -1,4 +1,4 @@
-package com.limethecoder.kitchen.model.salad;
+package com.limethecoder.kitchen.model.entity;
 
 import java.util.List;
 import java.util.function.Predicate;

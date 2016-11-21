@@ -1,6 +1,4 @@
-package com.limethecoder.kitchen.model.salad;
-
-import com.limethecoder.kitchen.model.vegetable.Vegetable;
+package com.limethecoder.kitchen.model.entity;
 
 import java.util.Objects;
 

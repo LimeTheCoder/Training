@@ -1,4 +1,4 @@
-package com.limethecoder.kitchen.model.vegetable;
+package com.limethecoder.kitchen.model.entity;
 
 
 /**
@@ -7,7 +7,7 @@ package com.limethecoder.kitchen.model.vegetable;
  * @version 1.1 21 Oct 2016
  * @author Taras Sakharchuk
  *
- * @see com.limethecoder.kitchen.model.salad.Ingredient
+ * @see com.limethecoder.kitchen.model.entity.Ingredient
  */
 public enum Vegetable {
     BROCCOLI(2.8, 7, 0.4, 34), CARROT(0.9, 10, 0.2, 41),

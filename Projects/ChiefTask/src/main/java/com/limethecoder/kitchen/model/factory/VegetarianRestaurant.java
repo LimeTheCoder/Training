@@ -3,7 +3,7 @@ package com.limethecoder.kitchen.model.factory;
 
 import com.limethecoder.kitchen.model.factory.greek.GreekRestaurant;
 import com.limethecoder.kitchen.model.factory.russian.RussianRestaurant;
-import com.limethecoder.kitchen.model.salad.VegetarianDish;
+import com.limethecoder.kitchen.model.entity.VegetarianDish;
 
 /**
  * Interface for factory of vegetarian dishes

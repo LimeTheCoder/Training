@@ -2,11 +2,11 @@ package com.limethecoder.kitchen;
 
 
 import com.limethecoder.kitchen.model.factory.russian.RussianMenu;
-import com.limethecoder.kitchen.model.salad.Ingredient;
-import com.limethecoder.kitchen.model.salad.Salad;
-import com.limethecoder.kitchen.model.salad.VegetarianDish;
-import com.limethecoder.kitchen.model.salad.SortOrder;
-import com.limethecoder.kitchen.model.vegetable.Vegetable;
+import com.limethecoder.kitchen.model.entity.Ingredient;
+import com.limethecoder.kitchen.model.entity.Salad;
+import com.limethecoder.kitchen.model.entity.VegetarianDish;
+import com.limethecoder.kitchen.model.entity.SortOrder;
+import com.limethecoder.kitchen.model.entity.Vegetable;
 
 import org.junit.Before;
 import org.junit.Test;
