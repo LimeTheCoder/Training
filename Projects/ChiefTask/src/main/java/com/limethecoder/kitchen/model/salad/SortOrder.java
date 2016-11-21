@@ -1,4 +1,4 @@
-package com.limethecoder.kitchen.model.vegetable;
+package com.limethecoder.kitchen.model.salad;
 
 /**
  * Enum represents different order of sorts

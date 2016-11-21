@@ -1,6 +1,5 @@
 package com.limethecoder.kitchen.model.salad;
 
-import com.limethecoder.kitchen.model.vegetable.SortOrder;
 import com.limethecoder.kitchen.model.vegetable.Vegetable;
 
 import java.util.ArrayList;

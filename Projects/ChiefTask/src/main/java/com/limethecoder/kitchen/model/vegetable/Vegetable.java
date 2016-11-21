@@ -1,19 +1,18 @@
 package com.limethecoder.kitchen.model.vegetable;
 
-import com.limethecoder.kitchen.model.salad.Salad;
 
 /**
- * Class describes common functionality for vegetable entities.
+ * Enum describes common functionality of vegetable entities.
  *
- * @version 1.0 18 Oct 2016
+ * @version 1.1 21 Oct 2016
  * @author Taras Sakharchuk
  *
- * @see Salad
+ * @see com.limethecoder.kitchen.model.salad.Ingredient
  */
-public abstract class Vegetable {
-
-    /** Default weight of vegetable */
-    private final static double DEFAULT_WEIGHT = 100.0;
+public enum Vegetable {
+    BROCCOLI(2.8, 7, 0.4, 34), CARROT(0.9, 10, 0.2, 41),
+    CUCUMBER(0.6, 3.6, 0.1, 16), ONION(1.1, 9, 0.1, 40),
+    POTATO(2, 17, 0.1, 77), TOMATO(0.6, 3.6, 0.1, 16);
 
     /** Amount of proteins in vegetable per 100 grammes */
     private double proteins;
@@ -27,9 +26,6 @@ public abstract class Vegetable {
     /** Amount of calories in vegetable per 100 grammes */
     private double calories;
 
-    /** Weight of vegetable in grammes(g) */
-    private double weight;
-
     /**
      * Constructor that performs fields initialization
      *
@@ -37,45 +33,15 @@ public abstract class Vegetable {
      * @param carbohydrates amount of carbohydrates in vegetable per 100 grammes
      * @param fats amount of fats in vegetable per 100 grammes
      * @param calories amount of calories in vegetable per 100 grammes
-     * @param weight weight of vegetable in grammes
      */
-    public Vegetable(double proteins, double carbohydrates, double fats,
-                     double calories, double weight) {
+    Vegetable(double proteins, double carbohydrates, double fats,
+                     double calories) {
         this.proteins = proteins;
         this.carbohydrates = carbohydrates;
         this.fats = fats;
         this.calories = calories;
-        this.weight = weight;
     }
 
-    /**
-     * Create vegetable object with weight
-     * initialized as {@link #DEFAULT_WEIGHT}
-     *
-     * @param proteins amount of proteins in vegetable per 100 grammes
-     * @param carbohydrates amount of carbohydrates in vegetable per 100 grammes
-     * @param fats amount of fats in vegetable per 100 grammes
-     * @param calories amount of calories in vegetable per 100 grammes
-     */
-    public Vegetable(double proteins, double carbohydrates,
-                     double fats, double calories) {
-        this(proteins, carbohydrates, fats, calories, DEFAULT_WEIGHT);
-    }
-
-    /**
-     * Method, that need to call for preparing vegetable
-     * for adding in salad
-     */
-    public abstract void prepareVegetable();
-
-    /**
-     * Returns total amount of calories in vegetable
-     *
-     * @return total amount of calories in vegetable
-     */
-    public double getTotalCalories() {
-        return calories / DEFAULT_WEIGHT * weight;
-    }
 
     public double getProteins() {
         return proteins;
@@ -109,46 +75,6 @@ public abstract class Vegetable {
         this.calories = calories;
     }
 
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Vegetable vegetable = (Vegetable) o;
-
-        if (Double.compare(vegetable.proteins, proteins) != 0) return false;
-        if (Double.compare(vegetable.carbohydrates, carbohydrates) != 0) return false;
-        if (Double.compare(vegetable.fats, fats) != 0) return false;
-        if (Double.compare(vegetable.calories, calories) != 0) return false;
-        return Double.compare(vegetable.weight, weight) == 0;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        temp = Double.doubleToLongBits(proteins);
-        result = (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(carbohydrates);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(fats);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(calories);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(weight);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
-    }
-
     @Override
     public String toString() {
         return "Vegetable{" +
@@ -156,8 +82,6 @@ public abstract class Vegetable {
                 ", carbohydrates per 100 grammes =" + carbohydrates +
                 ", fats per 100 grammes =" + fats +
                 ", calories per 100 grammes =" + calories +
-                ", weight=" + weight +
-                ", total_cal=" + getTotalCalories() +
                 '}';
     }
 }

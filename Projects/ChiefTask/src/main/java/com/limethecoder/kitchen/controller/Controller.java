@@ -2,7 +2,7 @@ package com.limethecoder.kitchen.controller;
 
 import com.limethecoder.kitchen.model.factory.VegetarianRestaurant;
 import com.limethecoder.kitchen.model.salad.VegetarianDish;
-import com.limethecoder.kitchen.model.vegetable.SortOrder;
+import com.limethecoder.kitchen.model.salad.SortOrder;
 import com.limethecoder.kitchen.model.vegetable.Vegetable;
 import com.limethecoder.kitchen.view.View;
 

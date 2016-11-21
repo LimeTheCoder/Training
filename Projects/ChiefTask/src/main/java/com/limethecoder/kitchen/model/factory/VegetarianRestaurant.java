@@ -1,6 +1,8 @@
 package com.limethecoder.kitchen.model.factory;
 
 
+import com.limethecoder.kitchen.model.factory.greek.GreekRestaurant;
+import com.limethecoder.kitchen.model.factory.russian.RussianRestaurant;
 import com.limethecoder.kitchen.model.salad.VegetarianDish;
 
 /**
@@ -24,4 +26,15 @@ public interface VegetarianRestaurant {
      * @return list of dishes in that restaurant
      */
     String[] getMenu();
+
+
+    static VegetarianRestaurant getRestaurant(RestaurantsList restaurant) {
+        switch (restaurant) {
+            case RUSSIAN:
+                return new RussianRestaurant();
+            case GREEK:
+            default:
+                return new GreekRestaurant();
+        }
+    }
 }
