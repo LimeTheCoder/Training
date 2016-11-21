@@ -9,7 +9,7 @@ public class ArrayList<E> implements List<E> {
     private static final int DEFAULT_CAPACITY = 10;
 
     /** Array that stores ArrayList elements */
-    private E[] data;
+    private Object[] data;
 
     /** Number of elements, that stored in array */
     private int size;
