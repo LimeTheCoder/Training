@@ -1,9 +1,9 @@
 package com.limethecoder.kitchen.controller;
 
 import com.limethecoder.kitchen.model.factory.VegetarianRestaurant;
+import com.limethecoder.kitchen.model.salad.Ingredient;
 import com.limethecoder.kitchen.model.salad.VegetarianDish;
 import com.limethecoder.kitchen.model.salad.SortOrder;
-import com.limethecoder.kitchen.model.vegetable.Vegetable;
 import com.limethecoder.kitchen.view.View;
 
 import java.util.List;
@@ -48,7 +48,7 @@ public class Controller {
         view.printMessage(View.TOTAL_CALORIES);
         view.printMessage(String.valueOf(dish.getTotalCalories()));
 
-        List<Vegetable> lst = dish.findByCalories(10, 50);
+        List<Ingredient> lst = dish.findByCalories(10, 50);
         view.printRangeMessage(10, 50);
         view.printList(lst);
     }

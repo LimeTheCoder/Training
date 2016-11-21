@@ -1,8 +1,5 @@
 package com.limethecoder.kitchen.model.salad;
 
-
-import com.limethecoder.kitchen.model.vegetable.Vegetable;
-
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -28,14 +25,14 @@ public interface VegetarianDish {
      *
      * @return list of ingredients
      */
-    List<Vegetable> getIngredients();
+    List<Ingredient> getIngredients();
 
     /**
      * Add new ingredient to the dish
      *
      * @param ingredient ingredient to add
      */
-    void addIngredient(Vegetable ingredient);
+    void addIngredient(Ingredient ingredient);
 
     /**
      * Based on sort order sorts list of ingredients
@@ -52,7 +49,7 @@ public interface VegetarianDish {
      *
      * @return list with ingredients, that matches given input range
      */
-    List<Vegetable> findByCalories(double minCalories,
+    List<Ingredient> findByCalories(double minCalories,
                                           double maxCalories);
 
     /**
@@ -62,10 +59,5 @@ public interface VegetarianDish {
      *
      * @return list with ingredients, that matches given predicate
      */
-    List<Vegetable> findByPredicate(Predicate<Vegetable> predicate);
-
-    /**
-     * Prepare all ingredients for being ready to consuming.
-     */
-    void prepareIngredients();
+    List<Ingredient> findByPredicate(Predicate<Ingredient> predicate);
 }

@@ -27,7 +27,13 @@ public interface VegetarianRestaurant {
      */
     String[] getMenu();
 
-
+    /**
+     * Based on argument created appropriate
+     * implementation of {@link VegetarianRestaurant} interface
+     *
+     * @param restaurant restaurant type, which object need to being created
+     * @return instantiated appropriate restaurant object
+     */
     static VegetarianRestaurant getRestaurant(RestaurantsList restaurant) {
         switch (restaurant) {
             case RUSSIAN:

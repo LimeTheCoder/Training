@@ -37,6 +37,11 @@ public class Ingredient {
         this.weight = weight;
     }
 
+    /**
+     * Constructor initialize object with {@link #DEFAULT_WEIGHT} parameter
+     *
+     * @param vegetable vegetable, that current ingredient object describes
+     */
     public Ingredient(Vegetable vegetable) {
         this(vegetable, DEFAULT_WEIGHT);
     }
@@ -65,5 +70,13 @@ public class Ingredient {
      */
     public double getTotalCalories() {
         return vegetable.getCalories() / DEFAULT_WEIGHT * weight;
+    }
+
+    @Override
+    public String toString() {
+        return "Ingredient{" +
+                "vegetable=" + vegetable +
+                ", weight=" + weight +
+                '}';
     }
 }

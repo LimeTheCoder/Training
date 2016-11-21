@@ -1,9 +1,10 @@
 package com.limethecoder.kitchen.model.factory.russian;
 
 import com.limethecoder.kitchen.model.factory.VegetarianRestaurant;
+import com.limethecoder.kitchen.model.salad.Ingredient;
 import com.limethecoder.kitchen.model.salad.Salad;
 import com.limethecoder.kitchen.model.salad.VegetarianDish;
-import com.limethecoder.kitchen.model.vegetable.entities.*;
+import com.limethecoder.kitchen.model.vegetable.Vegetable;
 
 import java.util.Arrays;
 
@@ -22,22 +23,22 @@ public class RussianRestaurant implements VegetarianRestaurant {
         switch (choice) {
             case VINAIGRETTE:
                 return new Salad(RussianMenu.VINAIGRETTE.name(),
-                        Arrays.asList(new Potato(140),
-                                new Cucumber(75),
-                                new Carrot(15)));
+                        Arrays.asList(new Ingredient(Vegetable.BROCCOLI, 140),
+                                new Ingredient(Vegetable.CUCUMBER, 75),
+                                new Ingredient(Vegetable.CARROT, 15)));
             case SUMMER:
                 return new Salad(RussianMenu.SUMMER.name(),
-                        Arrays.asList(new Broccoli(30),
-                                new Onion(62),
-                                new Carrot(45)));
+                        Arrays.asList(new Ingredient(Vegetable.BROCCOLI, 30),
+                                new Ingredient(Vegetable.ONION, 62),
+                                new Ingredient(Vegetable.CARROT, 45)));
             case ORIGINAL:
             default:
                 return new Salad(RussianMenu.ORIGINAL.name(),
-                        Arrays.asList(new Tomato(213),
-                                new Potato(123),
-                                new Carrot(15),
-                                new Onion(48),
-                                new Carrot(25)));
+                        Arrays.asList(new Ingredient(Vegetable.TOMATO, 213),
+                                new Ingredient(Vegetable.POTATO, 123),
+                                new Ingredient(Vegetable.CUCUMBER,15),
+                                new Ingredient(Vegetable.ONION, 48),
+                                new Ingredient(Vegetable.CARROT, (25))));
         }
     }
 

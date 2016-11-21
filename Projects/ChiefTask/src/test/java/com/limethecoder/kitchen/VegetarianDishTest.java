@@ -2,13 +2,11 @@ package com.limethecoder.kitchen;
 
 
 import com.limethecoder.kitchen.model.factory.russian.RussianMenu;
+import com.limethecoder.kitchen.model.salad.Ingredient;
 import com.limethecoder.kitchen.model.salad.Salad;
 import com.limethecoder.kitchen.model.salad.VegetarianDish;
 import com.limethecoder.kitchen.model.salad.SortOrder;
 import com.limethecoder.kitchen.model.vegetable.Vegetable;
-import com.limethecoder.kitchen.model.vegetable.entities.Carrot;
-import com.limethecoder.kitchen.model.vegetable.entities.Onion;
-import com.limethecoder.kitchen.model.vegetable.entities.Tomato;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,9 +22,9 @@ public class VegetarianDishTest {
     public void init() {
         vegetarianDish = new Salad(RussianMenu.ORIGINAL.name(),
                 Arrays.asList(
-                        new Carrot(100), // Total calories = 41
-                        new Onion(50), // Total calories = 20
-                        new Tomato(25))); // Total calories = 4
+                        new Ingredient(Vegetable.CARROT, 100), // Total calories = 41
+                        new Ingredient(Vegetable.ONION, 50), // Total calories = 20
+                        new Ingredient(Vegetable.TOMATO, 25))); // Total calories = 4
     }
 
     @Test
@@ -37,7 +35,7 @@ public class VegetarianDishTest {
 
     @Test
     public void testCaloriesRange() {
-        List<Vegetable> vegetables = vegetarianDish.findByCalories(15, 40);
+        List<Ingredient> vegetables = vegetarianDish.findByCalories(15, 40);
         assertEquals(vegetables.size(), 1);
         double cal = vegetables.get(0).getTotalCalories();
         assertTrue(cal >= 15 && cal <= 40);
@@ -46,7 +44,7 @@ public class VegetarianDishTest {
     @Test
     public void testSort() {
         vegetarianDish.sortIngredients(SortOrder.DESCENDING);
-        List<Vegetable> vegetables = vegetarianDish.getIngredients();
+        List<Ingredient> vegetables = vegetarianDish.getIngredients();
 
         for(int i = 0; i < vegetables.size() - 1; i++) {
             assertTrue(vegetables.get(i).getTotalCalories() >=

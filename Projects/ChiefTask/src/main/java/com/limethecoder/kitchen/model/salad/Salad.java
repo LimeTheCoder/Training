@@ -2,10 +2,7 @@ package com.limethecoder.kitchen.model.salad;
 
 import com.limethecoder.kitchen.model.vegetable.Vegetable;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -21,12 +18,12 @@ import java.util.stream.Collectors;
 public class Salad implements VegetarianDish {
 
     /** Default comparator for sorting in ascending order */
-    private final static Comparator<Vegetable> DEFAULT_COMPARATOR =
+    private final static Comparator<Ingredient> DEFAULT_COMPARATOR =
             (o1, o2) -> Double.compare(o1.getTotalCalories(),
                     o2.getTotalCalories());
 
     /** Ingredients of salad */
-    private List<Vegetable> ingredients;
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     /** Salad name */
     private String name;
@@ -37,41 +34,30 @@ public class Salad implements VegetarianDish {
      * @param ingredients ingredients of salad
      * @param name salad name
      */
-    public Salad(String name, List<Vegetable> ingredients) {
+    public Salad(String name, List<Ingredient> ingredients) {
         this.ingredients = ingredients;
         this.name = name;
-
-        prepareIngredients();
     }
 
     /**
      * Add given ingredient to list of ingredients of the current salad.
-     * If ingredients list is {@code null},
-     * then creates new list of ingredients
      *
      * @param ingredient ingredient, which need to add to the salad
+     * @throws NullPointerException if argument is null
      */
     @Override
-    public void addIngredient(Vegetable ingredient) {
-        if (ingredient == null) {
-            return;
-        }
-
-        if (ingredients == null) {
-            ingredients = new ArrayList<>();
-        }
-
-        ingredient.prepareVegetable();
+    public void addIngredient(Ingredient ingredient) {
+        Objects.requireNonNull(ingredient);
         ingredients.add(ingredient);
     }
 
     @Override
     public void sortIngredients(SortOrder order) {
-        if (ingredients == null || ingredients.isEmpty()) {
+        if (ingredients.isEmpty()) {
             return;
         }
 
-        Comparator<Vegetable> comparator = DEFAULT_COMPARATOR;
+        Comparator<Ingredient> comparator = DEFAULT_COMPARATOR;
 
         if (order == SortOrder.DESCENDING) {
             comparator = Collections.reverseOrder(comparator);
@@ -81,8 +67,8 @@ public class Salad implements VegetarianDish {
     }
 
     @Override
-    public List<Vegetable> findByPredicate(Predicate<Vegetable> predicate) {
-        if (ingredients == null || ingredients.isEmpty()) {
+    public List<Ingredient> findByPredicate(Predicate<Ingredient> predicate) {
+        if (ingredients.isEmpty()) {
             return null;
         }
 
@@ -91,39 +77,34 @@ public class Salad implements VegetarianDish {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public void prepareIngredients() {
-        if(ingredients == null || ingredients.isEmpty()) {
-            return;
-        }
-
-        ingredients.forEach(Vegetable::prepareVegetable);
-    }
 
     @Override
-    public List<Vegetable> findByCalories(double minCalories, double maxCalories) {
+    public List<Ingredient> findByCalories(double minCalories, double maxCalories) {
         return findByPredicate((x) -> x.getTotalCalories() >= minCalories
                 && x.getTotalCalories() <= maxCalories);
     }
 
     @Override
     public double getTotalCalories() {
-        if (ingredients == null || ingredients.isEmpty()) {
+        if (ingredients.isEmpty()) {
             return 0.0;
         }
 
-        return ingredients.stream().map(Vegetable::getTotalCalories)
+        return ingredients.stream().map(Ingredient::getTotalCalories)
                 .reduce(0.0, (x, y) -> x + y);
     }
 
     @Override
-    public List<Vegetable> getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Vegetable> ingredients) {
+    public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
-        prepareIngredients();
+
+        if(this.ingredients == null) {
+            this.ingredients = new ArrayList<>();
+        }
     }
 
     public String getName() {
