@@ -7,16 +7,16 @@ import java.util.List;
 public class Composite implements LexicalComponent {
 
     private List<LexicalComponent> components;
-    private String contentType;
+    private String compositeType;
 
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
+    public Composite(String compositeType) {
+        this.compositeType = compositeType;
         this.components = new ArrayList<>();
     }
 
-    public Composite(List<LexicalComponent> components, String contentType) {
+    public Composite(List<LexicalComponent> components, String compositeType) {
         this.components = components;
-        this.contentType = contentType;
+        this.compositeType = compositeType;
 
         if(components == null) {
             this.components = new ArrayList<>();
@@ -35,6 +35,18 @@ public class Composite implements LexicalComponent {
         components.remove(component);
     }
 
+    public LexicalComponent getLast() {
+        return components.get(-1);
+    }
+
+    public int childCount() {
+        return components.size();
+    }
+
+    public boolean isEmpty() {
+        return components.isEmpty();
+    }
+
     @Override
     public String getContent() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -48,8 +60,8 @@ public class Composite implements LexicalComponent {
     }
 
     @Override
-    public String getContentType() {
-        return contentType;
+    public String getCompositeType() {
+        return compositeType;
     }
 
     @Override
@@ -65,13 +77,13 @@ public class Composite implements LexicalComponent {
         Composite composite = (Composite) o;
 
         if (!components.equals(composite.components)) return false;
-        return contentType.equals(composite.contentType);
+        return compositeType.equals(composite.compositeType);
     }
 
     @Override
     public int hashCode() {
         int result = components.hashCode();
-        result = 31 * result + contentType.hashCode();
+        result = 31 * result + compositeType.hashCode();
         return result;
     }
 }

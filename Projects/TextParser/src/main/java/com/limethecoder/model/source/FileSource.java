@@ -39,10 +39,12 @@ public class FileSource implements Source {
         }
 
         reader = new FileReader(fileName);
+        nextChar = reader.read();
     }
 
     @Override
     public void close() throws IOException{
         reader.close();
+        nextChar = -1;
     }
 }

@@ -17,9 +17,9 @@ public interface LexicalComponent {
     String getContent();
 
     /**
-     * @return type of content that represented by lexical component
+     * @return type of component
      */
-    String getContentType();
+    String getCompositeType();
 
     /**
      * @return {@code true} if component is symbol else {@code false}

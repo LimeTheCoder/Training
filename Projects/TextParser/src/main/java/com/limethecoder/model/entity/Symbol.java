@@ -6,6 +6,7 @@ public class Symbol implements LexicalComponent {
     private SymbolType symbolType;
 
     public Symbol(char symbol) {
+        symbolType = SymbolType.CHARACTER;
         setSymbol(symbol);
     }
 
@@ -40,18 +41,37 @@ public class Symbol implements LexicalComponent {
         return symbolType == SymbolType.PUNCTUATION;
     }
 
+    public boolean isCharacter() {
+        return symbolType == SymbolType.CHARACTER;
+    }
+
     @Override
     public String getContent() {
         return String.valueOf(symbol);
     }
 
     @Override
-    public String getContentType() {
-        return ContentType.SYMBOL;
+    public String getCompositeType() {
+        return CompositeType.SYMBOL;
     }
 
     @Override
     public boolean isSymbol() {
         return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Symbol symbol1 = (Symbol) o;
+
+        return symbol == symbol1.symbol;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) symbol;
     }
 }
