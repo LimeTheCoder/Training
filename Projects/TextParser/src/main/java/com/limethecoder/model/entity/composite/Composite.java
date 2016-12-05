@@ -1,9 +1,19 @@
-package com.limethecoder.model.entity;
+package com.limethecoder.model.entity.composite;
 
 
-import java.util.ArrayList;
+import com.limethecoder.model.entity.LexicalComponent;
+
+import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Class that describes container objects in composite pattern.
+ * Stores list of {@link LexicalComponent} class objects.
+ * Can store another composites.
+ *
+ * @version 1.0 05 Dec 2016
+ * @author Taras Sakharchuk
+ */
 public class Composite implements LexicalComponent {
 
     private List<LexicalComponent> components;
@@ -11,7 +21,7 @@ public class Composite implements LexicalComponent {
 
     public Composite(String compositeType) {
         this.compositeType = compositeType;
-        this.components = new ArrayList<>();
+        this.components = new LinkedList<>();
     }
 
     public Composite(List<LexicalComponent> components, String compositeType) {
@@ -19,7 +29,7 @@ public class Composite implements LexicalComponent {
         this.compositeType = compositeType;
 
         if(components == null) {
-            this.components = new ArrayList<>();
+            this.components = new LinkedList<>();
         }
     }
 
@@ -35,14 +45,19 @@ public class Composite implements LexicalComponent {
         components.remove(component);
     }
 
-    public LexicalComponent getLast() {
-        return components.get(-1);
-    }
 
+    /**
+     * @return number of children elements
+     */
     public int childCount() {
         return components.size();
     }
 
+    /**
+     * Check is current composite object has any child.
+     *
+     * @return {@code true} if composite has no child, otherwise {@code false}
+     */
     public boolean isEmpty() {
         return components.isEmpty();
     }

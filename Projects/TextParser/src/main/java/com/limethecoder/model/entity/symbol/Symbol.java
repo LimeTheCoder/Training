@@ -1,6 +1,19 @@
-package com.limethecoder.model.entity;
+package com.limethecoder.model.entity.symbol;
 
 
+import com.limethecoder.model.entity.composite.CompositeType;
+import com.limethecoder.model.entity.LexicalComponent;
+
+
+/**
+ * Stores original char and {@link SymbolType} of that char.
+ * Represents leaf in composite pattern.
+ *
+ * @version 1.0 05 Dec 2016
+ * @author Taras Sakharchuk
+ *
+ * @see com.limethecoder.model.entity.composite.Composite
+ */
 public class Symbol implements LexicalComponent {
     private char symbol;
     private SymbolType symbolType;

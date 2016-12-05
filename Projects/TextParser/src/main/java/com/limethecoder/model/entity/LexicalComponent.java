@@ -1,5 +1,7 @@
 package com.limethecoder.model.entity;
 
+import com.limethecoder.model.entity.composite.Composite;
+
 /**
  * Interface that describes component.
  * Part of composite pattern

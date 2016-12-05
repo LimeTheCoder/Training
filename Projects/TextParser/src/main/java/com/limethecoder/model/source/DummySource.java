@@ -1,8 +1,12 @@
 package com.limethecoder.model.source;
 
 
-import java.io.IOException;
-
+/**
+ * Class that describes dummy source of information
+ *
+ * @version 1.0 05 Dec 2016
+ * @author Taras Sakharchuk
+ */
 public class DummySource implements Source {
 
     private char[] data;
@@ -18,13 +22,8 @@ public class DummySource implements Source {
         return new String(data);
     }
 
-    public void updateData(String data) {
-        this.data = data.toCharArray();
-        nextIndex = 0;
-    }
-
     @Override
-    public int readNextCharacter() throws IOException {
+    public int readNextCharacter() throws SourceException {
         nextIndex++;
         return data[nextIndex - 1];
     }
@@ -35,16 +34,16 @@ public class DummySource implements Source {
     }
 
     @Override
-    public void save(String information) throws IOException {
+    public void save(String information) throws SourceException {
         System.out.println(information);
     }
 
     @Override
-    public void connect() throws IOException {
+    public void connect() throws SourceException {
     }
 
     @Override
-    public void close() throws IOException {
+    public void close() throws SourceException {
 
     }
 }

@@ -3,6 +3,12 @@ package com.limethecoder.model.source;
 
 import java.io.*;
 
+/**
+ * Class that describes file as source of information
+ *
+ * @version 1.0 05 Dec 2016
+ * @author Taras Sakharchuk
+ */
 public class FileSource implements Source {
     private String fileName;
     private FileReader reader;
@@ -13,9 +19,13 @@ public class FileSource implements Source {
     }
 
     @Override
-    public int readNextCharacter() throws IOException{
+    public int readNextCharacter() throws SourceException {
         int res = nextChar;
-        nextChar = reader.read();
+        try {
+            nextChar = reader.read();
+        } catch (IOException e) {
+            throw new SourceException(e);
+        }
         return res;
     }
 
@@ -25,26 +35,38 @@ public class FileSource implements Source {
     }
 
     @Override
-    public void save(String information) throws IOException {
-        PrintWriter writer = new PrintWriter(new FileWriter(
-                new File(fileName)));
+    public void save(String information) throws SourceException {
+        try {
+            PrintWriter writer = new PrintWriter(new FileWriter(
+                    new File(fileName)));
 
-        writer.write(information);
+            writer.write(information);
+        } catch (IOException e) {
+            throw new SourceException(e);
+        }
     }
 
     @Override
-    public void connect() throws IOException{
+    public void connect() throws SourceException {
         if(reader != null) {
-            throw new IOException("Already connected");
+            throw new SourceException("Already connected");
         }
 
-        reader = new FileReader(fileName);
-        nextChar = reader.read();
+        try {
+            reader = new FileReader(fileName);
+            nextChar = reader.read();
+        } catch (Exception e) {
+            throw new SourceException(e);
+        }
     }
 
     @Override
-    public void close() throws IOException{
-        reader.close();
-        nextChar = -1;
+    public void close() throws SourceException {
+        try {
+            reader.close();
+            nextChar = -1;
+        } catch (IOException e) {
+            throw new SourceException(e);
+        }
     }
 }

@@ -1,10 +1,10 @@
-package com.limethecoder.model.entity;
+package com.limethecoder.model.entity.symbol;
 
 
 import java.util.regex.Pattern;
 
 /**
- * Enum that stores different types of characters
+ * Enum that stores possible types of characters
  *
  * @version 1.0 05 Dec 2016
  * @author Taras Sakharchuk

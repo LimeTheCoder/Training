@@ -1,4 +1,4 @@
-package com.limethecoder.model.entity;
+package com.limethecoder.model.entity.composite;
 
 /**
  * Interface that stores constants for different
