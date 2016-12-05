@@ -9,6 +9,11 @@ public class Composite implements LexicalComponent {
     private List<LexicalComponent> components;
     private String contentType;
 
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+        this.components = new ArrayList<>();
+    }
+
     public Composite(List<LexicalComponent> components, String contentType) {
         this.components = components;
         this.contentType = contentType;

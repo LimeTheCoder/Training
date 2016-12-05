@@ -6,6 +6,8 @@ package com.limethecoder.model.entity;
  *
  * @version 1.0 05 Dec 2016
  * @author Taras Sakharchuk
+ *
+ * @see Composite
  */
 public interface LexicalComponent {
 
