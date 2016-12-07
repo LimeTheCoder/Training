@@ -68,7 +68,11 @@ public class TextServiceImpl implements TextService {
                     }
 
                     if(lastType != s.getSymbolType()) {
-                        currSentence.addComponent(s);
+                        if(!currSentence.isEmpty()) {
+                            currSentence.addComponent(s);
+                        } else {
+                            text.addComponent(s);
+                        }
                     }
 
                 } else {
@@ -101,16 +105,9 @@ public class TextServiceImpl implements TextService {
     @Override
     public void save(Text text) {
         try {
-            output.connect();
             output.save(text.getContent());
         } catch (SourceException exception) {
             logger.log(Level.SEVERE, View.SAVE + exception.getMessage());
-        } finally {
-            try {
-                output.close();
-            } catch (SourceException exception) {
-                logger.log(Level.SEVERE, View.SAVE + exception.getMessage());
-            }
         }
     }
 }

@@ -1,6 +1,8 @@
 package com.limethecoder.model.source;
 
 
+import com.limethecoder.view.View;
+
 /**
  * Class that describes dummy source of information
  *
@@ -24,6 +26,10 @@ public class DummySource implements Source {
 
     @Override
     public int readNextCharacter() throws SourceException {
+        if(!hasNext()) {
+            throw new SourceException(View.EMPTY_STREAM);
+        }
+
         nextIndex++;
         return data[nextIndex - 1];
     }

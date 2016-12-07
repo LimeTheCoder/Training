@@ -14,7 +14,8 @@ public class View {
 
     public final static String SAVE = "In save:";
     public final static String LOAD = "In load:";
-
+    public final static String CONNECTION_FAIL = "No connection established";
+    public final static String EMPTY_STREAM = "No more elements";
     /** Stream to output information for user */
     private PrintStream stream;
 

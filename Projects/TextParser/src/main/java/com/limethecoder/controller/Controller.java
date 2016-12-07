@@ -48,7 +48,7 @@ public class Controller {
      * @param length words, who have that length of characters will be replaced
      * @param word string, that will be instead replaced words
      */
-    private void replace(int length, Text text, String word) {
+    public static void replace(int length, Text text, String word) {
         Composite wordComposite = new Composite(CompositeType.WORD);
         for(char c : word.toCharArray()) {
             wordComposite.addComponent(new Symbol(c));
