@@ -13,13 +13,21 @@ public class TextServiceTest {
             "Hello,,,,,,        Jinny! I like to see you. Good luck! Bye?";
     private final static String EXPECTED_CONTENT = "Hello, Jinny! " +
             "I like to see you. Good luck! Bye?";
+
     private final static int EXPECTED_CHILD_COUNT = 11;
+    private final static String REPLACED_CONTENT = "Test, Test! " +
+            "I like to see you. Good luck! Bye?";
+
+    private final String wordToReplace = "Test";
+    private final int lengthReplaced = 5;
+
     private Text text;
+    private TextService textService;
 
     @Before
     public void init() {
         Source source = Source.getInstance(SourceType.DUMMY, INPUT);
-        TextService textService = new TextServiceImpl(source, source);
+        textService = new TextServiceImpl(source, source);
         text = textService.load();
     }
 
@@ -31,5 +39,11 @@ public class TextServiceTest {
     @Test
     public void testChildCount() {
         assertEquals(text.getText().childCount(), EXPECTED_CHILD_COUNT);
+    }
+
+    @Test
+    public void testReplace() {
+        textService.replace(lengthReplaced, text, wordToReplace);
+        assertEquals(text.getContent(), REPLACED_CONTENT);
     }
 }

@@ -6,7 +6,7 @@ package com.limethecoder.model.source;
  * @version 1.0 05 Dec 2016
  * @author Taras Sakharchuk
  */
-public interface Source {
+public interface Source extends AutoCloseable {
     /**
      * Read from source next character.
      *
@@ -53,12 +53,12 @@ public interface Source {
      * @param source name of source
      * @return created source object
      */
-    static Source getInstance(String type, String source) {
+    static Source getInstance(SourceType type, String source) {
         switch (type) {
-            case SourceType.FILE:
+            case FILE:
                 return new FileSource(source);
 
-            case SourceType.DUMMY:
+            case DUMMY:
             default:
                 return new DummySource(source);
         }

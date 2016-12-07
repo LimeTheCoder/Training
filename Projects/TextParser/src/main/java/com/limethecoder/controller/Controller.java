@@ -38,33 +38,7 @@ public class Controller {
     public void process() {
         Text text = textService.load();
         view.printMessage(text.getContent());
-        replace(5, text, "Test");
+        textService.replace(5, text, "Test");
         textService.save(text);
-    }
-
-    /**
-     * Replace all words in the text with length equals {@param length}
-     * to another string {@param word} argument
-     *
-     * @param length words, who have that length of characters will be replaced
-     * @param word string, that will be instead replaced words
-     */
-    public static void replace(int length, Text text, String word) {
-        Container wordComposite = new Composite(ContainerType.WORD);
-        for(char c : word.toCharArray()) {
-            wordComposite.addComponent(new Symbol(c));
-        }
-
-        List<LexicalComponent> sentences = text.getText().getComponents();
-        for(int i = 0; i < sentences.size(); i++) {
-            if(sentences.get(i).isSymbol()) {
-                continue;
-            }
-
-            List<LexicalComponent> words = ((Container)sentences.get(i)).getComponents();
-            words.replaceAll(w -> !w.isSymbol() &&
-                    ((Composite)w).childCount() ==
-                            length ? wordComposite : w);
-        }
     }
 }

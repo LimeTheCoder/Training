@@ -17,16 +17,16 @@ import java.util.List;
 public class Composite implements Container {
 
     private List<LexicalComponent> components;
-    private String compositeType;
+    private ContainerType containerType;
 
-    public Composite(String compositeType) {
-        this.compositeType = compositeType;
+    public Composite(ContainerType containerType) {
+        this.containerType = containerType;
         this.components = new LinkedList<>();
     }
 
-    public Composite(List<LexicalComponent> components, String compositeType) {
+    public Composite(List<LexicalComponent> components, ContainerType containerType) {
         this.components = components;
-        this.compositeType = compositeType;
+        this.containerType = containerType;
 
         if(components == null) {
             this.components = new LinkedList<>();
@@ -71,8 +71,8 @@ public class Composite implements Container {
     }
 
     @Override
-    public String getContainerType() {
-        return compositeType;
+    public ContainerType getContainerType() {
+        return containerType;
     }
 
     @Override
@@ -89,13 +89,13 @@ public class Composite implements Container {
 
         if(!components.equals(composite.components)) return false;
 
-        return compositeType.equals(composite.compositeType);
+        return containerType.equals(composite.containerType);
     }
 
     @Override
     public int hashCode() {
         int result = components.hashCode();
-        result = 31 * result + compositeType.hashCode();
+        result = 31 * result + containerType.hashCode();
         return result;
     }
 }

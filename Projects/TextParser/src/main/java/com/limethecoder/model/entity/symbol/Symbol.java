@@ -15,23 +15,20 @@ import com.limethecoder.model.entity.LexicalComponent;
  * @see com.limethecoder.model.entity.composite.Composite
  */
 public class Symbol implements LexicalComponent {
-    private char symbol;
-    private SymbolType symbolType;
+    private final char symbol;
+    private final SymbolType symbolType;
 
     public Symbol(char symbol) {
-        symbolType = SymbolType.CHARACTER;
-        setSymbol(symbol);
-    }
-
-    public void setSymbol(char symbol) {
         this.symbol = symbol;
 
         for(SymbolType type : SymbolType.values()) {
             if(type.getPattern().matcher(String.valueOf(symbol)).matches()) {
                 symbolType = type;
-                break;
+                return;
             }
         }
+
+        symbolType = SymbolType.CHARACTER;
     }
 
     public char getSymbol() {
@@ -64,7 +61,7 @@ public class Symbol implements LexicalComponent {
     }
 
     @Override
-    public String getContainerType() {
+    public ContainerType getContainerType() {
         return ContainerType.SYMBOL;
     }
 

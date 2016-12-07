@@ -1,6 +1,7 @@
 package com.limethecoder.service;
 
 import com.limethecoder.model.Text;
+import com.limethecoder.model.entity.LexicalComponent;
 import com.limethecoder.model.entity.composite.Container;
 import com.limethecoder.model.entity.composite.Composite;
 import com.limethecoder.model.entity.composite.ContainerType;
@@ -11,6 +12,7 @@ import com.limethecoder.model.source.Source;
 import com.limethecoder.model.source.SourceException;
 import com.limethecoder.view.View;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -109,6 +111,26 @@ public class TextServiceImpl implements TextService {
             output.save(text.getContent());
         } catch (SourceException exception) {
             logger.log(Level.SEVERE, View.SAVE + exception.getMessage());
+        }
+    }
+
+    @Override
+    public void replace(int length, Text text, String word) {
+        Container wordComposite = new Composite(ContainerType.WORD);
+        for(char c : word.toCharArray()) {
+            wordComposite.addComponent(new Symbol(c));
+        }
+
+        List<LexicalComponent> sentences = text.getText().getComponents();
+        for(int i = 0; i < sentences.size(); i++) {
+            if(sentences.get(i).isSymbol()) {
+                continue;
+            }
+
+            List<LexicalComponent> words = ((Container)sentences.get(i)).getComponents();
+            words.replaceAll(w -> !w.isSymbol() &&
+                    ((Composite)w).childCount() ==
+                            length ? wordComposite : w);
         }
     }
 }

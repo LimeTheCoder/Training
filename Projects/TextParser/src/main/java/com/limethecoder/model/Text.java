@@ -3,6 +3,7 @@ package com.limethecoder.model;
 
 import com.limethecoder.model.entity.composite.Container;
 import com.limethecoder.model.entity.LexicalComponent;
+import com.limethecoder.model.entity.composite.ContainerType;
 
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class Text implements Container {
     }
 
     @Override
-    public String getContainerType() {
+    public ContainerType getContainerType() {
         return text.getContainerType();
     }
 

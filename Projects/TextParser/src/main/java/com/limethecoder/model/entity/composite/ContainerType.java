@@ -7,9 +7,6 @@ package com.limethecoder.model.entity.composite;
  * @version 1.0 05 Dec 2016
  * @author Taras Sakharchuk
  */
-public interface ContainerType {
-    String TEXT = "TEXT";
-    String SENTENCE = "SENTENCE";
-    String WORD = "WORD";
-    String SYMBOL = "SYMBOL";
+public enum  ContainerType {
+    TEXT, SENTENCE, WORD, SYMBOL
 }

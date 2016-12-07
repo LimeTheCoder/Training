@@ -1,6 +1,7 @@
 package com.limethecoder.model.entity;
 
 import com.limethecoder.model.entity.composite.Composite;
+import com.limethecoder.model.entity.composite.ContainerType;
 
 /**
  * Interface that describes component.
@@ -21,7 +22,7 @@ public interface LexicalComponent {
     /**
      * @return type of component
      */
-    String getContainerType();
+    ContainerType getContainerType();
 
     /**
      * @return {@code true} if component is symbol else {@code false}

@@ -7,7 +7,6 @@ package com.limethecoder.model.source;
  * @version 1.0 05 Dec 2016
  * @author Taras Sakharchuk
  */
-public interface SourceType {
-    String DUMMY = "DUMMY";
-    String FILE = "FILE";
+public enum  SourceType {
+    DUMMY, FILE
 }

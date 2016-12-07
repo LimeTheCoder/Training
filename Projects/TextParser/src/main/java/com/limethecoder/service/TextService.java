@@ -26,4 +26,13 @@ public interface TextService {
      * @param text to save
      */
     void save(Text text);
+
+    /**
+     * Replace all words in the text with length equals {@param length}
+     * to another string {@param word} argument
+     *
+     * @param length words, who have that length of characters will be replaced
+     * @param word string, that will be instead replaced words
+     */
+    void replace(int length, Text text, String word);
 }

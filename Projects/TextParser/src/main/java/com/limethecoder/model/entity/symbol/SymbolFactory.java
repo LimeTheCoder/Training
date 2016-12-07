@@ -1,8 +1,8 @@
 package com.limethecoder.model.entity.symbol;
 
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.WeakHashMap;
 
 /**
  * Factory that consumes for client symbol objects.
@@ -22,7 +22,7 @@ public class SymbolFactory {
     /**
      * Cache for symbols.
      */
-    private Map<Character, Symbol> map = new HashMap<>();
+    private Map<Character, Symbol> map = new WeakHashMap<>();
 
     private SymbolFactory() {}
 
