@@ -66,10 +66,9 @@ public class Composite implements LexicalComponent {
     public String getContent() {
         StringBuilder stringBuilder = new StringBuilder();
 
-        components.forEach(el ->
-                stringBuilder
-                        .append(el.getContent())
-        );
+        for(LexicalComponent component : components) {
+            stringBuilder.append(component.getContent());
+        }
 
         return stringBuilder.toString();
     }
@@ -91,7 +90,8 @@ public class Composite implements LexicalComponent {
 
         Composite composite = (Composite) o;
 
-        if (!components.equals(composite.components)) return false;
+        if(!components.equals(composite.components)) return false;
+
         return compositeType.equals(composite.compositeType);
     }
 

@@ -17,7 +17,7 @@ public class SymbolFactory {
     /**
      * Factory object, that one per session.
      */
-    private static SymbolFactory factory = new SymbolFactory();
+    private final static SymbolFactory factory = new SymbolFactory();
 
     /**
      * Cache for symbols.
