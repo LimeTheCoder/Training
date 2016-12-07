@@ -10,3 +10,4 @@
 
 ### [Main repository for projects](../master/Projects)
 ### [Project 1. Chief-cooker](../master/Projects/ChiefTask)
+### [Project 2. Text Parser](../master/Projects/TextParser)
