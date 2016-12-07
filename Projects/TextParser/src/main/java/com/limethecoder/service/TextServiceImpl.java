@@ -1,8 +1,9 @@
 package com.limethecoder.service;
 
 import com.limethecoder.model.Text;
+import com.limethecoder.model.entity.composite.Container;
 import com.limethecoder.model.entity.composite.Composite;
-import com.limethecoder.model.entity.composite.CompositeType;
+import com.limethecoder.model.entity.composite.ContainerType;
 import com.limethecoder.model.entity.symbol.Symbol;
 import com.limethecoder.model.entity.symbol.SymbolFactory;
 import com.limethecoder.model.entity.symbol.SymbolType;
@@ -38,9 +39,9 @@ public class TextServiceImpl implements TextService {
     public Text load() {
         Objects.requireNonNull(input);
 
-        Composite text = new Composite(CompositeType.TEXT);
-        Composite currWord = new Composite(CompositeType.WORD);
-        Composite currSentence = new Composite(CompositeType.SENTENCE);
+        Container text = new Composite(ContainerType.TEXT);
+        Container currWord = new Composite(ContainerType.WORD);
+        Container currSentence = new Composite(ContainerType.SENTENCE);
 
         SymbolType lastType = null;
 
@@ -53,13 +54,13 @@ public class TextServiceImpl implements TextService {
                 if(!s.isCharacter()) {
                     if (!currWord.isEmpty()) {
                         currSentence.addComponent(currWord);
-                        currWord = new Composite(CompositeType.WORD);
+                        currWord = new Composite(ContainerType.WORD);
                     }
 
                     if(s.isSentenceSeparator()) {
                         if(!currSentence.isEmpty()) {
                             text.addComponent(currSentence);
-                            currSentence = new Composite(CompositeType.SENTENCE);
+                            currSentence = new Composite(ContainerType.SENTENCE);
                         }
 
                         text.addComponent(s);

@@ -2,9 +2,10 @@ package com.limethecoder.controller;
 
 
 import com.limethecoder.model.Text;
+import com.limethecoder.model.entity.composite.Container;
 import com.limethecoder.model.entity.LexicalComponent;
 import com.limethecoder.model.entity.composite.Composite;
-import com.limethecoder.model.entity.composite.CompositeType;
+import com.limethecoder.model.entity.composite.ContainerType;
 import com.limethecoder.model.entity.symbol.Symbol;
 import com.limethecoder.service.TextService;
 import com.limethecoder.view.View;
@@ -49,7 +50,7 @@ public class Controller {
      * @param word string, that will be instead replaced words
      */
     public static void replace(int length, Text text, String word) {
-        Composite wordComposite = new Composite(CompositeType.WORD);
+        Container wordComposite = new Composite(ContainerType.WORD);
         for(char c : word.toCharArray()) {
             wordComposite.addComponent(new Symbol(c));
         }
@@ -60,7 +61,7 @@ public class Controller {
                 continue;
             }
 
-            List<LexicalComponent> words = ((Composite)sentences.get(i)).getComponents();
+            List<LexicalComponent> words = ((Container)sentences.get(i)).getComponents();
             words.replaceAll(w -> !w.isSymbol() &&
                     ((Composite)w).childCount() ==
                             length ? wordComposite : w);

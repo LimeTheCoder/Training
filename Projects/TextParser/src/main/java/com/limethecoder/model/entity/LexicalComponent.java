@@ -21,7 +21,7 @@ public interface LexicalComponent {
     /**
      * @return type of component
      */
-    String getCompositeType();
+    String getContainerType();
 
     /**
      * @return {@code true} if component is symbol else {@code false}

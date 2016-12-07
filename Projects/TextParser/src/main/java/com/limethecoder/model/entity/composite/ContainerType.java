@@ -7,7 +7,7 @@ package com.limethecoder.model.entity.composite;
  * @version 1.0 05 Dec 2016
  * @author Taras Sakharchuk
  */
-public interface CompositeType {
+public interface ContainerType {
     String TEXT = "TEXT";
     String SENTENCE = "SENTENCE";
     String WORD = "WORD";

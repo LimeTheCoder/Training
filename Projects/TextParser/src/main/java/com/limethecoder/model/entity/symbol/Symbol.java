@@ -1,7 +1,7 @@
 package com.limethecoder.model.entity.symbol;
 
 
-import com.limethecoder.model.entity.composite.CompositeType;
+import com.limethecoder.model.entity.composite.ContainerType;
 import com.limethecoder.model.entity.LexicalComponent;
 
 
@@ -64,8 +64,8 @@ public class Symbol implements LexicalComponent {
     }
 
     @Override
-    public String getCompositeType() {
-        return CompositeType.SYMBOL;
+    public String getContainerType() {
+        return ContainerType.SYMBOL;
     }
 
     @Override

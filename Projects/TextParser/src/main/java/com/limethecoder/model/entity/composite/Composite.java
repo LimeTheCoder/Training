@@ -14,7 +14,7 @@ import java.util.List;
  * @version 1.0 05 Dec 2016
  * @author Taras Sakharchuk
  */
-public class Composite implements LexicalComponent {
+public class Composite implements Container {
 
     private List<LexicalComponent> components;
     private String compositeType;
@@ -33,31 +33,28 @@ public class Composite implements LexicalComponent {
         }
     }
 
+    @Override
     public List<LexicalComponent> getComponents() {
         return components;
     }
 
+    @Override
     public void addComponent(LexicalComponent component) {
         components.add(component);
     }
 
+    @Override
     public void removeComponent(LexicalComponent component) {
         components.remove(component);
     }
 
 
-    /**
-     * @return number of children elements
-     */
+    @Override
     public int childCount() {
         return components.size();
     }
 
-    /**
-     * Check is current composite object has any child.
-     *
-     * @return {@code true} if composite has no child, otherwise {@code false}
-     */
+    @Override
     public boolean isEmpty() {
         return components.isEmpty();
     }
@@ -74,7 +71,7 @@ public class Composite implements LexicalComponent {
     }
 
     @Override
-    public String getCompositeType() {
+    public String getContainerType() {
         return compositeType;
     }
 
