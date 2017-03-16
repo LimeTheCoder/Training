@@ -25,7 +25,7 @@ public class PenaltyAppTest {
 
     @Test
     public void testScoreAfterCreation() {
-        assertEquals(penaltyApp.getCurrentScore(), "Home(0) - Away(0)");
+        assertEquals("Home(0) - Away(0)", penaltyApp.getCurrentScore());
     }
 
     @Test
@@ -38,7 +38,7 @@ public class PenaltyAppTest {
         penaltyApp.setHomeTeamName("Arsenal");
         penaltyApp.setAwayTeamName("Chelsey");
 
-        assertEquals(penaltyApp.getCurrentScore(), "Arsenal(0) - Chelsey(0)");
+        assertEquals("Arsenal(0) - Chelsey(0)", penaltyApp.getCurrentScore());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class PenaltyAppTest {
         performNextRound(penaltyApp, true, false);
         performNextRound(penaltyApp, true, true);
 
-        assertEquals(penaltyApp.getCurrentScore(), "Home(2) - Away(1)");
+        assertEquals("Home(2) - Away(1)", penaltyApp.getCurrentScore());
     }
 
     @Test(expected = IllegalStateException.class)
