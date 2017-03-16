@@ -2,13 +2,13 @@ package com.limethecoder.pos.model;
 
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 
 public class Sale {
     private Date date;
-    private Set<SalesLineItem> items = new HashSet<>();
+    private Set<SalesLineItem> items = new TreeSet<>();
 
     public Date getDate() {
         return date;

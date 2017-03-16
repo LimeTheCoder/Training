@@ -17,6 +17,14 @@ public class PaymentRequest {
         return getMoneyLeftToPay() == 0;
     }
 
+    public Sale getSale() {
+        return sale;
+    }
+
+    public int getTotalInvoice() {
+        return sale.getTotalPrice();
+    }
+
     public int getMoneyLeftToPay() {
         int leftToPay = sale.getTotalPrice() - coinsPayed;
         return leftToPay < 0 ? 0 : leftToPay;

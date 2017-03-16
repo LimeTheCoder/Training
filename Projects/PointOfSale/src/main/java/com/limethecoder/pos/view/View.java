@@ -11,6 +11,9 @@ public interface View {
     String INPUT_COIN = "Please inject coin. " +
             "System supports only 1, 5, 10, 25, 50 coin values.";
 
+    String CHOOSE_PRODUCT = "Enter product name you want to get";
+    String NO_SUCH_PRODUCT_ERROR = "No such product in machine";
+
     /**
      * Displays message to user.
      *

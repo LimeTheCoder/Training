@@ -1,7 +1,7 @@
 package com.limethecoder.pos.model;
 
 
-public class SalesLineItem {
+public class SalesLineItem{
     private int quantity;
     private Product product;
 
