@@ -8,7 +8,7 @@ import java.util.Set;
 public class VendorMachine implements PointOfSale {
     private Set<Sale> sales = new HashSet<>();
 
-    public void processRequest(PaymentRequest paymentRequest) {
+    public int processRequest(PaymentRequest paymentRequest) {
         if (!paymentRequest.isPayed()) {
             throw new IllegalStateException();
         }
@@ -16,6 +16,8 @@ public class VendorMachine implements PointOfSale {
         Sale sale = paymentRequest.getSale();
         sale.setDate(new Date());
         sales.add(sale);
+
+        return paymentRequest.getOddMoney();
     }
 
     public int getTotalIncome() {
@@ -23,5 +25,9 @@ public class VendorMachine implements PointOfSale {
                 .stream()
                 .mapToInt(Sale::getTotalPrice)
                 .sum();
+    }
+
+    public Set<Sale> getSales() {
+        return sales;
     }
 }

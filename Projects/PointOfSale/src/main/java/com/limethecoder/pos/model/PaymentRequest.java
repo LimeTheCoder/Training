@@ -9,8 +9,8 @@ public class PaymentRequest {
         sale.addItemToSale(salesLineItem);
     }
 
-    public void putCoin(int coin) {
-        coinsPayed += coin;
+    public void putCoin(Coin coin) {
+        coinsPayed += coin.getValue();
     }
 
     public boolean isPayed() {
@@ -23,6 +23,14 @@ public class PaymentRequest {
 
     public int getTotalInvoice() {
         return sale.getTotalPrice();
+    }
+
+    public int getCoinsPayed() {
+        return coinsPayed;
+    }
+
+    public int getOddMoney() {
+        return getCoinsPayed() - getTotalInvoice();
     }
 
     public int getMoneyLeftToPay() {
