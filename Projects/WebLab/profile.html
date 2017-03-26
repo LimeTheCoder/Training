@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Файловое хранилище v0.01</title>
+	    <link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+
+	<body>
+		<header>
+            <div>
+                <img src="media/folder.ico" width="50" height="50">
+                <h1>Файловое хранилище v0.01</h1>
+                <img src="media/folder.ico" width="50" height="50">
+            </div>
+        </header>
+
+        <div class="header-msg">
+			Необходимо выполнить вход в систему
+		</div>
+
+		<div class="accept-types">
+			<h4>Можно загружать:</h4><br/>
+			ZIP (до 20 Mb);<br/>
+			DOCX (до 40 Mb);<br/>
+			PPTX (до 50 Mb);<br/>
+			
+			<h4>Использовано:</h4><br/>
+			27.34 Mb из 100.00 Mb<br/>
+		</div>
+
+		<div class="middle">
+			<table>
+				<tr>
+					<th>Файл</th>
+					<th>Размер(Kb)</th>
+					<th>Дата и время</th>
+					<th>Удалить</th>
+				</tr>
+				<tr>
+					<td><a href="#">Это архив с русским именем.zip</a></td>
+					<td>132.22</td>
+					<td>2014.02.28 18:01:15</td>
+					<td><a href="#">Удалить</a></td>
+				</tr>
+				<tr>
+					<td><a href="#">_www_app.zip</a></td>
+					<td>132.45</td>
+					<td>2014.02.28 18:24:54</td>
+					<td><a href="#">Удалить</a></td>
+				</tr>
+			</table>
+
+            <form>
+                <fieldset>
+                    <legend>Загрузить новый файл</legend>
+                    <div>
+                        <div class="file-info">
+                            <input type="file" id="file">
+                            <input type="text" id="file-path">
+                            <input type="button" value="Выбрать"/>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="submit" value="Загрузить"/>
+                    </div>
+                </fieldset>
+            </form>
+            <br/>
+
+            <form>
+                <fieldset>
+                    <legend>Запросить с удаленного сервера</legend>
+                    <div>
+                        <label for="request"></label>
+                        <input type="text" id="request">
+                    </div>
+                    <div>
+                        <label for="save">Поместить в хранилище</label>
+                        <input type="checkbox" id="store">
+                    </div>
+                    <div>
+                        <input type="submit" value="Запросить"/>
+                    </div>
+                </fieldset>
+            </form>
+		</div>
+
+        <div class="stats">
+            <h4>Статистика:</h4><br/>
+            Пользователей: 123<br/>
+            Файлов: 1234<br/>
+            Объем: 2345 Мб<br/>
+            Объем / Польз.: 45 Мб<br/>
+        </div>
+
+	    <footer>
+	        <p>&copy; 2017, EPAM RD HTML Training</p>
+	    </footer>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Файловое хранилище v0.01</title>
+	    <link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+
+	<body>
+		<header>
+            <div>
+                <img src="media/folder.ico" width="50" height="50">
+                <h1>Файловое хранилище v0.01</h1>
+                <img src="media/folder.ico" width="50" height="50">
+            </div>
+        </header>
+
+        <div class="header-msg">
+			Необходимо выполнить вход в систему
+		</div>
+
+        <form action="profile.html" method="POST">
+            <fieldset>
+                <p>
+                    <label for="login">Логин:</label>
+                    <input type="text" id="login" name="login" required/>
+                </p>
+
+                <p>
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" name="password" required/>
+                </p>
+                <p>
+                    <label for="remember-me">Запомнить:</label>
+                    <input type="checkbox" id="remember-me" name="remember-me"/>
+                </p>
+                <p>
+                    <input type="submit" value="Войти"/>
+                </p>
+            </fieldset>
+        </form>
+
+        <div class="stats">
+            <b>Статистика:</b><br/>
+            Пользователей: 123<br/>
+            Файлов: 1234<br/>
+            Объем: 2345 Мб<br/>
+            Объем / Польз.: 45 Мб<br/>
+        </div>
+
+	    <footer>
+	        <p>&copy; 2017, EPAM RD HTML Training</p>
+	    </footer>
+	</body>
+
+</html>
